@@ -1,0 +1,75 @@
+The night-enhancement generator this engine reimplements, the checkpoint tensors
+it reads, and the upstream Python that `tools/reference.py` was transcribed from
+are the work of:
+
+    Yeying Jin, Wenhan Yang, Robby T. Tan
+    "Unsupervised Night Image Enhancement: When Layer Decomposition Meets
+     Light-Effects Suppression"
+    European Conference on Computer Vision (ECCV) 2022
+    https://github.com/jinyeying/night-enhancement
+
+TWO UPSTREAM STATEMENTS APPLY, and they are not the same statement, so both are
+reproduced here rather than paraphrased into one:
+
+  1. The repository's `LICENSE` file is a bare MIT licence. Its copyright line
+     names "Hyeonwoo Kang" rather than the paper's authors and it carries no
+     academic-use clause; the file appears to have been copied along with a
+     dependency. Its full text is at the end of this file, verbatim.
+  2. The repository's README, under "## License", says:
+
+         The code and models in this repository are licensed under the MIT
+         License for academic and other non-commercial uses.
+         For commercial use of the code and models, separate commercial
+         licensing is available. Please contact:
+         - Yeying Jin (jinyeying@u.nus.edu)
+         - Robby T. Tan (tanrobby@gmail.com)
+         - Jonathan Tan (jonathan_tano@nus.edu.sg)
+
+     The README is the more specific of the two about the MODELS, so the terms
+     it states are the terms this repository distributes the converted
+     checkpoints under: academic and other non-commercial use, with commercial
+     licensing available from the authors. Anyone intending a commercial use of
+     these weights should treat the README's clause as binding and contact the
+     authors rather than rely on the LICENSE file alone.
+
+WHAT THIS FILE COVERS, and what it does not:
+  * `nightenh-lol.safetensors` and `nightenh-delighteffects.safetensors` are
+    FORMAT CONVERSIONS of the upstream `LOL_params_0900000.pt` and
+    `delighteffects_params_0600000.pt` checkpoints. The weights are the authors'
+    work and remain under the terms above; they are NOT covered by this
+    repository's MIT licence.
+  * `tools/reference.py` is a transcription of the upstream `networks.py`
+    generator and `tools/convert.py` reads the upstream checkpoints' containers:
+    both are derived works under the same terms, NOT under this repository's MIT
+    licence.
+  * `src/`, `cuda/`, `build.rs` and `Cargo.toml` are an independent
+    reimplementation of the architecture and are MIT licensed; see LICENSE.
+    Running them on the converted checkpoints does not make them derivative
+    works of the upstream code.
+  * The upstream `.pt` files themselves are NOT redistributed here.
+
+--------------------------------------------------------------------------------
+
+The upstream LICENSE file, verbatim:
+
+MIT License
+
+Copyright (c) 2019 Hyeonwoo Kang
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

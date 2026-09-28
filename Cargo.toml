@@ -1,0 +1,34 @@
+[package]
+name = "nightenh"
+version = "0.1.0"
+edition = "2021"
+description = "Fast, self-contained unsupervised night image enhancement (low-light and light-effects suppression) in Rust with CPU and CUDA backends"
+license = "MIT"
+repository = "https://github.com/jacobsparts/nightenh-rs"
+readme = "README.md"
+
+[[bin]]
+name = "nightenh"
+path = "src/main.rs"
+
+[features]
+default = ["cuda"]
+# Compiles cuda/nightenh.cu and cuda/kernels.cu into the embedded fatbins. Without
+# it the crate is a pure-Rust CPU build that needs no CUDA toolchain.
+cuda = []
+# The development flags and the checks only a development build contains; see
+# docs/DEVELOPING.md. Off by default and refused by NAME in a release build.
+dev = []
+
+[dependencies]
+lightgpu = { git = "https://github.com/jacobsparts/lightgpu.git" }
+png = "0.17"
+rayon = "1.10"
+
+[build-dependencies]
+lightgpu-build = { git = "https://github.com/jacobsparts/lightgpu.git", package = "lightgpu-build" }
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
